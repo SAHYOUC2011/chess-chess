@@ -217,46 +217,270 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
             .game-container {
-                padding: 20px;
-                margin: 10px;
-            }
-            
-            .game-title {
-                font-size: 2em;
+                max-width: 90%;
+                padding: 25px;
             }
             
             .square {
-                width: 45px;
-                height: 45px;
-                font-size: 2em;
+                width: 55px;
+                height: 55px;
+                font-size: 2.2em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .game-container {
+                padding: 15px;
+                margin: 5px;
+                border-radius: 15px;
+            }
+            
+            .game-title {
+                font-size: 1.8em;
+                margin-bottom: 15px;
+            }
+            
+            .square {
+                width: 42px;
+                height: 42px;
+                font-size: 1.8em;
             }
             
             .controls {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
             }
             
             .btn {
-                padding: 10px 20px;
-                font-size: 14px;
+                padding: 8px 16px;
+                font-size: 13px;
+                min-width: 100px;
             }
             
             .game-info {
                 grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .mode-selector, .difficulty-selector {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .status {
+                font-size: 1em;
+                padding: 10px;
+            }
+            
+            .captured-pieces {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .chessboard {
+                padding: 5px;
             }
         }
 
         @media (max-width: 480px) {
-            .square {
-                width: 35px;
-                height: 35px;
-                font-size: 1.5em;
+            body {
+                padding: 10px;
+            }
+            
+            .game-container {
+                padding: 10px;
+                margin: 0;
+                border-radius: 10px;
             }
             
             .game-title {
-                font-size: 1.5em;
+                font-size: 1.4em;
+                margin-bottom: 10px;
+            }
+            
+            .square {
+                width: 35px;
+                height: 35px;
+                font-size: 1.4em;
+            }
+            
+            .btn {
+                padding: 6px 12px;
+                font-size: 12px;
+                min-width: 80px;
+            }
+            
+            .controls {
+                gap: 5px;
+            }
+            
+            .mode-selector, .difficulty-selector {
+                gap: 5px;
+            }
+            
+            .status {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+            
+            .player-info {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            
+            .captured-pieces {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            
+            .captured-piece {
+                font-size: 1.2em;
+            }
+            
+            .chessboard {
+                padding: 3px;
+                border-width: 2px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .square {
+                width: 30px;
+                height: 30px;
+                font-size: 1.2em;
+            }
+            
+            .game-title {
+                font-size: 1.2em;
+            }
+            
+            .btn {
+                padding: 5px 10px;
+                font-size: 11px;
+                min-width: 70px;
+            }
+            
+            .status {
+                font-size: 0.8em;
+                padding: 6px;
+            }
+        }
+
+        /* Tablet Portrait */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+            .game-container {
+                max-width: 85%;
+                padding: 30px;
+            }
+            
+            .square {
+                width: 65px;
+                height: 65px;
+                font-size: 2.8em;
+            }
+            
+            .game-title {
+                font-size: 2.2em;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 15px;
+            }
+        }
+
+        /* Tablet Landscape */
+        @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+            .game-container {
+                max-width: 80%;
+                padding: 35px;
+            }
+            
+            .square {
+                width: 70px;
+                height: 70px;
+                font-size: 3em;
+            }
+            
+            .game-info {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Touch-specific styles */
+        @media (hover: none) and (pointer: coarse) {
+            .square:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            
+            .square:active {
+                transform: scale(0.95);
+                background-color: rgba(255, 215, 0, 0.3) !important;
+            }
+            
+            .btn:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            
+            .btn:active {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+        }
+
+        .drag-over {
+            background: rgba(255, 215, 0, 0.5) !important;
+            transform: scale(1.05);
+        }
+
+        .touch-device .square:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .rotated {
+            transition: transform 0.3s ease;
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Vibration feedback styles */
+        .vibrate {
+            animation: vibrate 0.3s ease-in-out;
+        }
+
+        @keyframes vibrate {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
+        }
+
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .piece {
+                text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
             }
         }
     </style>
@@ -1118,7 +1342,61 @@
             updateGameStatus('اختر وضع اللعب لبدء اللعبة');
             updatePlayerInfo();
             updateCapturedPieces();
+            
+            // Mobile optimizations
+            optimizeForMobile();
+            adjustBoardSize();
+            
+            // Add touch device class
+            if ('ontouchstart' in window) {
+                document.body.classList.add('touch-device');
+            }
+            
+            // Prevent context menu on long press
+            document.addEventListener('contextmenu', function(e) {
+                if (e.target.closest('.square')) {
+                    e.preventDefault();
+                }
+            });
+            
+            // Add swipe gestures for mobile
+            addSwipeGestures();
         });
+
+        // Swipe gestures for mobile navigation
+        function addSwipeGestures() {
+            let startX, startY, startTime;
+            
+            document.addEventListener('touchstart', function(e) {
+                if (e.target.closest('.game-container')) {
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                    startTime = Date.now();
+                }
+            });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!startX || !startY) return;
+                
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
+                const deltaX = endX - startX;
+                const deltaY = endY - startY;
+                const deltaTime = Date.now() - startTime;
+                
+                if (deltaTime < 300 && Math.abs(deltaX) > 100 && Math.abs(deltaY) < 50) {
+                    if (deltaX > 0) {
+                        // Swipe right - undo move
+                        undoMove();
+                    } else {
+                        // Swipe left - hint
+                        getHint();
+                    }
+                }
+                
+                startX = startY = null;
+            });
+        }
 
         // Keyboard shortcuts
         document.addEventListener('keydown', function(e) {
@@ -1130,20 +1408,194 @@
                 undoMove();
             } else if (e.key === 'n' || e.key === 'N') {
                 newGame();
+            } else if (e.key === 'r' || e.key === 'R') {
+                // Rotate board for mobile
+                if (window.innerWidth <= 768) {
+                    rotateBoard();
+                }
             }
         });
+
+        // Board rotation for mobile
+        function rotateBoard() {
+            const board = document.querySelector('.chessboard');
+            const isRotated = board.classList.contains('rotated');
+            
+            if (isRotated) {
+                board.classList.remove('rotated');
+                board.style.transform = 'rotate(0deg)';
+            } else {
+                board.classList.add('rotated');
+                board.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Battery optimization for mobile
+        function optimizeBattery() {
+            if (navigator.getBattery) {
+                navigator.getBattery().then(function(battery) {
+                    if (battery.level < 0.2) {
+                        // Reduce animations when battery is low
+                        document.querySelectorAll('.square').forEach(square => {
+                            square.style.transition = 'none';
+                        });
+                    }
+                });
+            }
+        }
+
+        // Network status awareness
+        function handleNetworkStatus() {
+            window.addEventListener('online', function() {
+                updateGameStatus('اتصال الإنترنت متاح');
+            });
+            
+            window.addEventListener('offline', function() {
+                updateGameStatus('وضع عدم الاتصال - اللعبة تعمل محلياً');
+            });
+        }
+
+        // Performance monitoring
+        function monitorPerformance() {
+            let frameCount = 0;
+            let lastTime = performance.now();
+            
+            function checkFPS() {
+                const now = performance.now();
+                frameCount++;
+                
+                if (now - lastTime >= 1000) {
+                    const fps = frameCount * 1000 / (now - lastTime);
+                    
+                    if (fps < 30 && window.innerWidth <= 768) {
+                        // Reduce visual effects on low-end devices
+                        document.querySelectorAll('.square').forEach(square => {
+                            square.style.transition = 'background-color 0.1s ease';
+                        });
+                    }
+                    
+                    frameCount = 0;
+                    lastTime = now;
+                }
+                
+                requestAnimationFrame(checkFPS);
+            }
+            
+            requestAnimationFrame(checkFPS);
+        }
+
+        // Initialize additional features
+        setTimeout(function() {
+            optimizeBattery();
+            handleNetworkStatus();
+            monitorPerformance();
+        }, 1000);
 
         // Touch support for mobile
         let touchStartX = 0;
         let touchStartY = 0;
+        let touchStartTime = 0;
+        let isDragging = false;
+        let touchTarget = null;
 
         document.addEventListener('touchstart', function(e) {
             touchStartX = e.touches[0].clientX;
             touchStartY = e.touches[0].clientY;
-        });
+            touchStartTime = Date.now();
+            isDragging = false;
+            touchTarget = e.target.closest('.square');
+        }, { passive: false });
 
         document.addEventListener('touchmove', function(e) {
+            if (!touchTarget) return;
+            
+            const touchX = e.touches[0].clientX;
+            const touchY = e.touches[0].clientY;
+            const deltaX = Math.abs(touchX - touchStartX);
+            const deltaY = Math.abs(touchY - touchStartY);
+            
+            if (deltaX > 10 || deltaY > 10) {
+                isDragging = true;
+                
+                // Visual feedback during drag
+                const draggedPiece = touchTarget.querySelector('.piece');
+                if (draggedPiece) {
+                    draggedPiece.style.transform = 'scale(1.2)';
+                    draggedPiece.style.zIndex = '1000';
+                }
+                
+                // Highlight possible drop targets
+                const targetElement = document.elementFromPoint(touchX, touchY);
+                const targetSquare = targetElement ? targetElement.closest('.square') : null;
+                
+                document.querySelectorAll('.square').forEach(sq => {
+                    sq.classList.remove('drag-over');
+                });
+                
+                if (targetSquare && targetSquare !== touchTarget) {
+                    targetSquare.classList.add('drag-over');
+                }
+            }
+            
             e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('touchend', function(e) {
+            if (!touchTarget) return;
+            
+            const touchTime = Date.now() - touchStartTime;
+            const touchX = e.changedTouches[0].clientX;
+            const touchY = e.changedTouches[0].clientY;
+            
+            // Reset visual feedback
+            const draggedPiece = touchTarget.querySelector('.piece');
+            if (draggedPiece) {
+                draggedPiece.style.transform = '';
+                draggedPiece.style.zIndex = '';
+            }
+            
+            document.querySelectorAll('.square').forEach(sq => {
+                sq.classList.remove('drag-over');
+            });
+            
+            if (isDragging) {
+                // Handle drag and drop
+                const targetElement = document.elementFromPoint(touchX, touchY);
+                const targetSquare = targetElement ? targetElement.closest('.square') : null;
+                
+                if (targetSquare && targetSquare !== touchTarget) {
+                    const fromRow = parseInt(touchTarget.dataset.row);
+                    const fromCol = parseInt(touchTarget.dataset.col);
+                    const toRow = parseInt(targetSquare.dataset.row);
+                    const toCol = parseInt(targetSquare.dataset.col);
+                    
+                    if (selectedSquare && selectedSquare[0] === fromRow && selectedSquare[1] === fromCol) {
+                        handleSquareClick(toRow, toCol);
+                    } else {
+                        handleSquareClick(fromRow, fromCol);
+                        setTimeout(() => handleSquareClick(toRow, toCol), 100);
+                    }
+                }
+            } else if (touchTime < 300) {
+                // Handle tap
+                const row = parseInt(touchTarget.dataset.row);
+                const col = parseInt(touchTarget.dataset.col);
+                handleSquareClick(row, col);
+            }
+            
+            touchTarget = null;
+            isDragging = false;
+        });
+
+        // Double tap for hints on mobile
+        let lastTapTime = 0;
+        document.addEventListener('touchstart', function(e) {
+            const currentTime = Date.now();
+            if (currentTime - lastTapTime < 300) {
+                getHint();
+                e.preventDefault();
+            }
+            lastTapTime = currentTime;
         });
 
         // Auto-resize for different screen sizes
@@ -1152,21 +1604,90 @@
             const board = document.querySelector('.chessboard');
             const squares = document.querySelectorAll('.square');
             
+            if (!container || !board || squares.length === 0) return;
+            
             const containerWidth = container.offsetWidth;
-            const maxBoardSize = Math.min(containerWidth - 40, 600);
+            const containerHeight = window.innerHeight;
+            const isPortrait = containerHeight > containerWidth;
+            
+            // Calculate optimal board size
+            let maxBoardSize;
+            if (window.innerWidth <= 480) {
+                maxBoardSize = Math.min(containerWidth - 20, containerHeight * 0.4);
+            } else if (window.innerWidth <= 768) {
+                maxBoardSize = Math.min(containerWidth - 30, containerHeight * 0.5);
+            } else {
+                maxBoardSize = Math.min(containerWidth - 40, 600);
+            }
+            
             const squareSize = Math.floor(maxBoardSize / 8) - 3;
+            const fontSize = Math.max(Math.floor(squareSize * 0.6), 12);
             
             squares.forEach(square => {
                 square.style.width = squareSize + 'px';
                 square.style.height = squareSize + 'px';
-                square.style.fontSize = Math.floor(squareSize * 0.7) + 'px';
+                square.style.fontSize = fontSize + 'px';
             });
+            
+            // Adjust board padding
+            const padding = Math.max(Math.floor(squareSize * 0.1), 3);
+            board.style.padding = padding + 'px';
         }
 
-        window.addEventListener('resize', adjustBoardSize);
-        window.addEventListener('orientationchange', function() {
-            setTimeout(adjustBoardSize, 100);
+        // Orientation change handler
+        function handleOrientationChange() {
+            setTimeout(() => {
+                adjustBoardSize();
+                // Force redraw on iOS
+                const body = document.body;
+                body.style.display = 'none';
+                body.offsetHeight;
+                body.style.display = 'flex';
+            }, 100);
+        }
+
+        // Viewport meta tag adjustment for mobile
+        function adjustViewport() {
+            const viewport = document.querySelector('meta[name="viewport"]');
+            if (viewport) {
+                if (window.innerWidth <= 480) {
+                    viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+                } else {
+                    viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes';
+                }
+            }
+        }
+
+        // Prevent zoom on double tap (iOS Safari)
+        document.addEventListener('touchend', function(e) {
+            const now = Date.now();
+            if (now - lastTapTime <= 300) {
+                e.preventDefault();
+            }
         });
+
+        // Initialize responsive features
+        window.addEventListener('resize', adjustBoardSize);
+        window.addEventListener('orientationchange', handleOrientationChange);
+        window.addEventListener('load', function() {
+            adjustBoardSize();
+            adjustViewport();
+        });
+
+        // Performance optimization for mobile
+        function optimizeForMobile() {
+            if (window.innerWidth <= 768) {
+                // Reduce animation complexity on mobile
+                document.querySelectorAll('.square').forEach(square => {
+                    square.style.transition = 'background-color 0.2s ease';
+                });
+                
+                // Optimize hover effects for touch devices
+                if ('ontouchstart' in window) {
+                    document.body.classList.add('touch-device');
+                }
+            }
+        }
     </script>
 </body>
 </html>
